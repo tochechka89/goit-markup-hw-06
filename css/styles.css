@@ -60,7 +60,6 @@ img {
   line-height: 1.17; /* 116.667% */
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  /*margin-right: 76px;*/
   margin-right: 149px;
 }
 
@@ -98,22 +97,54 @@ img {
     left: 0;
     background-color: #ffffff;
     padding: 72px 0 40px 16px;
-    z-index: 99;
+    overflow: auto;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+}
+
+.mob-menu .is-open{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mob-menu-list:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+.mob-menu-link {
+  color: #2e2f42;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+}
+
+.mob-menu-item:first-child .mob-menu-link {
+  color: #404bbf;
+}
+
+.mob-address {
+  font-style: normal;
 }
 
 .mob-address-link {
   margin-bottom: 48px;
 }
 
-.mob-soc-item {
+.mob-header-address-link:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.mob-soc-list {
   display: flex;
   gap: 40px;
 }
 
 .hero {
+  position: relative;
   background-color: #2e2f42;
   background-image: linear-gradient(
       rgba(46, 47, 66, 0.7),
@@ -124,8 +155,7 @@ img {
   background-position: center;
   background-size: cover;
   padding: 72px 0;
-  max-width: 320px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 @media screen and (min-device-pixel-ratio: 2), 
@@ -142,8 +172,10 @@ img {
   line-height: 1.11; /* 107.143% */
   letter-spacing: 0.02em;
   text-transform: capitalize;
-  padding: 72px 60px;
+  max-width: 200px;
   text-align: center;
+  margin: 0 auto;
+  margin-bottom: 72px;
 }
 
 .hero-button {
@@ -176,7 +208,7 @@ button:focus {
 .section-why-us,
 .section-portfolio {
   background-color: #ffffff;
-  margin: 96px 16px;
+  padding: 96px 0;
 }
 
 .list-why-us {
@@ -229,7 +261,7 @@ button:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 72px;
 }
 
 .section-team-list {
@@ -309,7 +341,7 @@ button:focus {
 .portfolio-item {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 24px;
+  row-gap: 48px;
 }
 
 .portfolio-list {
@@ -322,11 +354,6 @@ button:focus {
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
-.portfolio-cover {
-  width: 288px;
-  height: 280px;
-}
-
 .service {
   padding: 32px 16px;
   border: 1px solid #e7e9fc;
@@ -335,9 +362,9 @@ button:focus {
 
 .portfolio-title {
   color: #2e2f42;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.2; 
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.11;
   letter-spacing: 0.02em;
   text-transform: capitalize;
   text-align: center;
@@ -388,13 +415,11 @@ button:focus {
 
 .footer {
   background-color: #2e2f42;
-  display: flex;
-  max-height: 664px;
   padding: 96px 0;
 }
 
 .footer-container {
-  width: 320px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
   gap: 72px;
@@ -449,11 +474,13 @@ button:focus {
   justify-content: center;
 }
 
+.mob-soc-item,
 .footer-soc {
   width: 40px;
   height: 40px;
 }
 
+.mob-soc-link,
 .footer-soc-icon {
   display: flex;
   width: 40px;
@@ -745,7 +772,11 @@ button:focus {
 
 @media screen and (min-width: 768px) {
   .container {
-    min-width: 768px;
+    max-width: 768px;
+  }
+
+  .header-container {
+    height: 72px;
   }
 
   .hero {
@@ -890,35 +921,31 @@ button:focus {
   }
 
   .team-item {
-    gap: 24px;
+    gap:64px 24px;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     flex-basis: calc((100% - 24px) / 2);
-    margin-left: 108px;
   }
+
+
   .portfolio-item {
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 24px;
-    row-gap: 72px;
+    width:100%;
+    gap: 72px 24px;
   }
 
   .portfolio-list {
     width: calc((100% - 24px) / 2);
   }
 
-  .portfolio-cover {
-    width: 356px;
-    height: 300px;
-  }
-
   .footer-container {
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: 24px;
-    row-gap: 72px;
+   row-gap: 72px;
     align-items: baseline;
-    margin-left: 108px;
+    max-width: 530;
+    justify-content: center;
   }
 
   .footer-logo-text {
@@ -931,6 +958,10 @@ button:focus {
 
   .title-soc {
     text-align: left;
+  }
+
+  .f-form {
+    justify-content: flex-start;
   }
 
   .f-subscribe {
@@ -1048,26 +1079,30 @@ button:focus {
   }
   
   .footer {
-    max-height: 312px;
     padding: 100px 0;
   }
 
   .footer-container {
-  flex-direction: column;
-  align-items: baseline;
-  margin-left: 56px;
-  padding: 0;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: nowrap;
   }
 
-  .footer-container .container {
-    margin-right: 120px;
+
+
+  .footer-text {
+    margin-bottom: 0px;
   }
 
-  .footer-logo-text {
-    margin-right: 120px;
+  .footer-soc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
   }
 
   .footer-soc-link {
     margin-right: 80px;
+    margin-bottom: 0;
   }
 }
